@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Tangle document</title>
+    <title>What If?</title>
 
     <!-- Tangle -->
     <script type="text/javascript" src="Tangle.js"></script>
@@ -16,40 +16,102 @@
 
     <!-- example -->
     <script type="text/javascript">
-
+      
+     
         function setUpTangle () {
-
+     
             var element = document.getElementById("example");
-
             var tangle = new Tangle(element, {
                 initialize: function () {
                     this.speed = 60;
                     this.distance = 60;
                     this.time = 60;
-                      
+                    this.wantedTime = 20;  
+                    this.neededSpeed = 60;
+                    this.speedLimit = 60;
+                    this.speedLimitDifference = Math.abs(this.neededSpeed - this.speed);
+                
+                    this.destinationTimeDifference = Math.abs(this.time - this.wantedTime);
+
+                    this.ticketProbability = 10;
+                    this.ticketPrice = 300;
+
+                    this.wagePerHour = 60;
+                    this.wagePerMinute = 1;
+
+                    this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute);
                 },
                 update: function () {
                     this.time = (this.distance / this.speed).toFixed(2) * 60;
                     //this.distance = this.speed * (this.time/60).toFixed(2);
                     //this.speed = (this.distance / this.time).toFixed(2) * 60;
+                    this.neededSpeed = (this.distance / this.wantedTime).toFixed(2) *60;
+                    this.speedLimitDifference = Math.abs(this.speed - this.speedLimit);
+                    
+                    this.destinationTimeDifference = Math.abs(this.time - this.wantedTime);
+
+
+                    this.wagePerMinute = (this.wagePerHour / 60).toFixed(1);
+                    this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute).toFixed(0);
 
                 }
+                
             });
+        }
+
+        function addTime(x){
+            var now = new Date();
+            var nowAfterTime = new Date(now);
+            nowAfterTime.setMinutes(now.getMinutes()+x);
+           document.getElementById("nowAfter").innerHTML = nowAfterTime.toLocaleTimeString();
+
         }
 
     </script>
 </head>
 
-<body onload="setUpTangle();">
+<body onload="setUpTangle(); addTime(5);">
 
-    <p>Example of Reactive Document.</p>
+    <h1>What If?</h1>
 
     <p id="example">
-        If you drive at <span data-var="speed" class="TKAdjustableNumber" data-min="1" data-max="120"> mph</span>  
-        and your destination is within <span data-var="distance" class="TKAdjustableNumber" data-min="1" data-max="1000"> miles</span>,
+        If you drive at <span style="color:red;" data-var="speed" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span>  
+        and your destination is within <span  style="color:red;" data-var="distance" class="TKAdjustableNumber" data-min="1"  data-max="1000"> miles</span>,
         you
-        will reach your destination in <span data-var="time"   data-min="1" data-max="600"> minutes</span>.
+        will reach your destination in <span style="color:blue;" data-var="time"  > minutes</span>.<!--  -- at  <span style="color:blue;" id="nowAfter"></span>. -->
+   
+   
+        <br></br>
+        If your speed limit is  <span style="color:red;" data-var="speedLimit" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span> and you want to reach in   
+        <span style="color:red;" data-var="wantedTime" class="TKAdjustableNumber" data-min="1" data-max="600" > minutes</span> , you need to drive at 
+        <span style="color:blue;" data-var="neededSpeed"   > mph</span>.
+    Being over  <span style="color:blue;" data-var="speedLimitDifference"  > mph</span>.
+    There is about <span style="color:red;" data-var="ticketProbability" class="TKAdjustableNumber" data-min="0" data-max="100" >% </span>chance
+        of getting a speed ticket, worth <span style="color:red;" data-var="ticketPrice" class="TKAdjustableNumber" data-min="0" data-max="5000" > USD </span>.
+  
+        <br></br>
+        <br></br>
+
+        <img src="ticket.png" alt="ticket"> <small>Source: New York Speeding Fines</small>
+
+        <br></br>
+        <br></br>
+
+        That being said, if you earn   <span style="color:red;" data-var="wagePerHour" class="TKAdjustableNumber" data-min="1" data-max="300" >$/hr</span>, which is  
+        <span style="color:blue;" data-var="wagePerMinute"   >$/min</span>, you will need to work
+        <span style="color:blue;" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the ticket.
+
+        Or, you can take the  <span style="color:blue;" data-var="ticketProbability"  >% </span> risk 
+        of getting a <span style="color:blue;" data-var="ticketPrice"  > USD </span> speed ticket and save <span style="color:blue;" data-var="destinationTimeDifference" > minutes</span>.
+        
+    
+
+    
     </p> 
+
+    <img src="tm.png" alt="mt"  width="100" height="100"> <small></small>
+
+
 
 </body>
 </html>
