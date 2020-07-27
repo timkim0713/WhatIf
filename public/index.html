@@ -3,11 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>What If?</title>
+    <link rel="stylesheet" href="./style/style.css">
 
     <!-- Tangle -->
     <script type="text/javascript" src="Tangle.js"></script>
 
-    <!-- TangleKit (optional) -->
     <link rel="stylesheet" href="TangleKit/TangleKit.css" type="text/css">
     <script type="text/javascript" src="TangleKit/mootools.js"></script>
     <script type="text/javascript" src="TangleKit/sprintf.js"></script>
@@ -51,7 +51,7 @@
                     this.destinationTimeDifference = Math.abs(this.time - this.wantedTime);
 
 
-                    this.wagePerMinute = (this.wagePerHour / 60).toFixed(1);
+                    this.wagePerMinute = (this.wagePerHour / 60).toFixed(2);
                     this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute).toFixed(0);
 
                 }
@@ -75,42 +75,41 @@
     <h1>What If?</h1>
 
     <p id="example">
-        If you drive at <span style="color:red;" data-var="speed" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span>  
-        and your destination is within <span  style="color:red;" data-var="distance" class="TKAdjustableNumber" data-min="1"  data-max="1000"> miles</span>,
+        If you drive at <span    data-var="speed" data-step="5"
+        class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span>  
+        and your destination is within <span   data-var="distance" class="TKAdjustableNumber" data-min="1"  data-max="1000"> miles</span>,
         you
-        will reach your destination in <span style="color:blue;" data-var="time"  > minutes</span>.<!--  -- at  <span style="color:blue;" id="nowAfter"></span>. -->
+        will reach your destination in <span class="nonDraggables" data-var="time"  > minutes</span>.<!--  -- at  <span class="nonDraggables" id="nowAfter"></span>. -->
    
    
         <br></br>
-        If your speed limit is  <span style="color:red;" data-var="speedLimit" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span> and you want to reach in   
-        <span style="color:red;" data-var="wantedTime" class="TKAdjustableNumber" data-min="1" data-max="600" > minutes</span> , you need to drive at 
-        <span style="color:blue;" data-var="neededSpeed"   > mph</span>.
-    Being over  <span style="color:blue;" data-var="speedLimitDifference"  > mph</span>.
-    There is about <span style="color:red;" data-var="ticketProbability" class="TKAdjustableNumber" data-min="0" data-max="100" >% </span>chance
-        of getting a speed ticket, worth <span style="color:red;" data-var="ticketPrice" class="TKAdjustableNumber" data-min="0" data-max="5000" > USD </span>.
+        If your speed limit is  <span   data-var="speedLimit"   data-step="5" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span> and you want to reach in   
+        <span   data-var="wantedTime" class="TKAdjustableNumber" data-min="1" data-max="600" > minutes</span> , you need to drive at 
+        <span class="nonDraggables" data-var="neededSpeed"   > mph</span>.
+    Being over  <span class="nonDraggables" data-var="speedLimitDifference"  > mph</span>.
+    There is about <span   data-var="ticketProbability" class="TKAdjustableNumber" data-min="0" data-max="100" >% </span>chance
+        of getting a speed ticket, worth $<span  data-var="ticketPrice"  data-step="5"  data-min="0" data-max="5000" >  </span>.
   
         <br></br>
         <br></br>
 
-        <img src="/data/ticket.png" alt="ticket"> <small>Source: New York Speeding Fines</small>
-
+        <img src="./data/ticket.png" alt="ticket">  
         <br></br>
         <br></br>
 
-        That being said, if you earn   <span style="color:red;" data-var="wagePerHour" class="TKAdjustableNumber" data-min="1" data-max="300" >$/hr</span>, which is  
-        <span style="color:blue;" data-var="wagePerMinute"   >$/min</span>, you will need to work
-        <span style="color:blue;" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the ticket.
+        That being said, if you earn   <span   data-var="wagePerHour" class="TKAdjustableNumber" data-min="1" data-max="300" >$/hr</span>, which is  
+        <span class="nonDraggables" data-var="wagePerMinute"   >$/min</span>, you will need to work
+        <span class="nonDraggables" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the ticket.
 
-        Or, you can take the  <span style="color:blue;" data-var="ticketProbability"  >% </span> risk 
-        of getting a <span style="color:blue;" data-var="ticketPrice"  > USD </span> speed ticket and save <span style="color:blue;" data-var="destinationTimeDifference" > minutes</span>.
+        Or, you can take the  <span class="nonDraggables" data-var="ticketProbability"  >% </span> risk 
+        of getting a <class="nonDraggables">$<span data-var="ticketPrice"  > </span></class> speed ticket and save <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>.
         
     
 
     
     </p> 
 
-    <img src="/data/tm.png" alt="mt"  width="100" height="100"> <small></small>
-
+ 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/7.16.1/firebase-app.js"></script>
 

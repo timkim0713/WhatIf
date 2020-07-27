@@ -30,21 +30,38 @@
 
 .TKAdjustableNumber {
 	position:relative;
-	color: rgb(10, 105, 50);
-	border-bottom: 1px dashed #46f;
+	color: rgb(165, 131, 209);
+	border-bottom: 1px dashed rgb(92, 92, 92);
 }
 
 .TKAdjustableNumberHover {
 }
 
 .TKAdjustableNumberDown {
-	color: #00c;
-	border-bottom: 1px dashed #00c;
-}
+	font-size: larger;
+	color: rgb(136, 89, 212);
+	border-bottom: 1px solid rgb(136, 89, 212);
+	transition: 0.5s;
+
+ }
 
 .TKAdjustableNumberHelp {
 	position:absolute;
-	color: #00f;
-	font: 9px "Helvetica-Neue", "Arial", sans-serif;
+	font-style: italic;
+	color: rgb(255, 255, 255);
+	font: 12px "Helvetica-Neue", "Arial", sans-serif;
 }
 
+.nonDraggables{
+    color:rgb(204, 172, 55)
+}
+
+body{
+	background-color: rgb(37, 37, 37);
+	color: rgb(208, 198, 218);
+	}
+
+	h1{
+	color: rgb(196, 173, 219);
+
+}
