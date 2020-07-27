@@ -13,8 +13,7 @@
     <script type="text/javascript" src="TangleKit/sprintf.js"></script>
     <script type="text/javascript" src="TangleKit/BVTouchable.js"></script>
     <script type="text/javascript" src="TangleKit/TangleKit.js"></script>
-
-    <!-- example -->
+ 
     <script type="text/javascript">
       
      
@@ -36,16 +35,15 @@
                     this.ticketProbability = 10;
                     this.ticketPrice = 300;
 
-                    this.wagePerHour = 60;
+                    this.wagePerHour = 15;
                     this.wagePerMinute = 1;
 
                     this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute);
                 },
                 update: function () {
-                    this.time = (this.distance / this.speed).toFixed(2) * 60;
-                    //this.distance = this.speed * (this.time/60).toFixed(2);
-                    //this.speed = (this.distance / this.time).toFixed(2) * 60;
-                    this.neededSpeed = (this.distance / this.wantedTime).toFixed(2) *60;
+                    this.time = ((this.distance / this.speed).toFixed(2) * 60).toFixed(0);
+       
+                    this.neededSpeed = ((this.distance / this.wantedTime).toFixed(2) *60).toFixed(0);
                     this.speedLimitDifference = Math.abs(this.speed - this.speedLimit);
                     
                     this.destinationTimeDifference = Math.abs(this.time - this.wantedTime);
@@ -72,9 +70,10 @@
 
 <body onload="setUpTangle(); addTime(5);">
 
-    <h1>What If?</h1>
+    <div class="content">
+        <h1>What If?</h1>
 
-    <p id="example">
+        <p id="example">
         If you drive at <span    data-var="speed" data-step="5"
         class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span>  
         and your destination is within <span   data-var="distance" class="TKAdjustableNumber" data-min="1"  data-max="1000"> miles</span>,
@@ -83,17 +82,16 @@
    
    
         <br></br>
-        If your speed limit is  <span   data-var="speedLimit"   data-step="5" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span> and you want to reach in   
-        <span   data-var="wantedTime" class="TKAdjustableNumber" data-min="1" data-max="600" > minutes</span> , you need to drive at 
+        If your speed limit is  <span   data-var="speedLimit"   data-step="5" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span> and you want to reach your destination in   
+        <span   data-var="wantedTime" class="TKAdjustableNumber" data-min="1" data-max="600" > minutes</span>, you need to drive at 
         <span class="nonDraggables" data-var="neededSpeed"   > mph</span>.
-    Being over  <span class="nonDraggables" data-var="speedLimitDifference"  > mph</span>.
-    There is about <span   data-var="ticketProbability" class="TKAdjustableNumber" data-min="0" data-max="100" >% </span>chance
-        of getting a speed ticket, worth $<span  data-var="ticketPrice"  data-step="5"  data-min="0" data-max="5000" >  </span>.
+    Being <span class="nonDraggables" data-var="speedLimitDifference"  > mph</span> over the speed limit, you assume there is <span   data-var="ticketProbability" class="TKAdjustableNumber" data-min="0" data-max="100" >%</span> chance
+        of getting a speed ticket worth <span class="prefixDraggable">$</span><span class="TKAdjustableNumber" data-var="ticketPrice"  data-step="5"  data-min="0" data-max="5000" ></span>.
   
         <br></br>
         <br></br>
 
-        <img src="./data/ticket.png" alt="ticket">  
+        <img id=ticketImage src="./data/ticket.png" alt="ticket"> <span id="sourceTicketImage">Source: New York Speeding Fines</span> 
         <br></br>
         <br></br>
 
@@ -102,13 +100,13 @@
         <span class="nonDraggables" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the ticket.
 
         Or, you can take the  <span class="nonDraggables" data-var="ticketProbability"  >% </span> risk 
-        of getting a <class="nonDraggables">$<span data-var="ticketPrice"  > </span></class> speed ticket and save <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>.
+        of getting a <span class="prefixNonDraggable">$</span><span data-var="ticketPrice" class="nonDraggables" > </span></class>speed ticket and save <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>.
         
     
 
     
     </p> 
-
+</div>
  
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/7.16.1/firebase-app.js"></script>

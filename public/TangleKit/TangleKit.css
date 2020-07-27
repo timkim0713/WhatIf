@@ -30,8 +30,8 @@
 
 .TKAdjustableNumber {
 	position:relative;
-	color: rgb(165, 131, 209);
-	border-bottom: 1px dashed rgb(92, 92, 92);
+	color: rgb(131, 209, 190);
+	border-bottom: 1px dashed rgb(155, 255, 250);
 }
 
 .TKAdjustableNumberHover {
@@ -39,8 +39,8 @@
 
 .TKAdjustableNumberDown {
 	font-size: larger;
-	color: rgb(136, 89, 212);
-	border-bottom: 1px solid rgb(136, 89, 212);
+	color: rgb(124, 167, 236);
+	border-bottom: 1px solid rgb(89, 132, 212);
 	transition: 0.5s;
 
  }
@@ -52,16 +52,53 @@
 	font: 12px "Helvetica-Neue", "Arial", sans-serif;
 }
 
-.nonDraggables{
-    color:rgb(204, 172, 55)
-}
 
 body{
 	background-color: rgb(37, 37, 37);
-	color: rgb(208, 198, 218);
+	color: rgb(184, 218, 206);
+	font-size:larger ;
 	}
 
-	h1{
-	color: rgb(196, 173, 219);
+h1{
+	color: rgb(101, 167, 147);
+}
 
+.prefixDraggable{
+	color: rgb(131, 209, 190);
+	border-bottom: 1px dashed rgb(155, 255, 250);
+}
+.prefixDraggable:active{
+	font-size: larger;
+	color: rgb(124, 167, 236);
+	border-bottom: 1px solid rgb(89, 132, 212);
+	transition: 0.5s;
+}
+.prefixNonDraggable{
+    color:rgb(233, 110, 53)
+}
+.nonDraggables{
+    color:rgb(233, 110, 53)
+}
+
+#sourceTicketImage{
+ 	font-size: small;
+	color: dimgray;
+	display: flex; 
+	justify-content: center
+
+}
+#ticketImage{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+}
+
+.content{
+	margin-left: 10%;
+	margin-top: 5%;
+	margin-right: 10%;
+	border: 1px solid rgb(66, 66, 66);
+	border-radius: 5%;
+	padding: 5%;
 }
