@@ -22,10 +22,10 @@
             var element = document.getElementById("example");
             var tangle = new Tangle(element, {
                 initialize: function () {
-                    this.speed = 60;
-                    this.distance = 60;
+                    this.speed = 70;
+                    this.distance = 70;
                     this.time = 60;
-                    this.wantedTime = 20;  
+                    this.wantedTime = 50;  
                     this.neededSpeed = 60;
                     this.speedLimit = 60;
                     this.speedLimitDifference = Math.abs(this.neededSpeed - this.speed);
@@ -33,12 +33,14 @@
                     this.destinationTimeDifference = Math.abs(this.time - this.wantedTime);
 
                     this.ticketProbability = 10;
-                    this.ticketPrice = 300;
+                    this.ticketPrice = 75;
 
-                    this.wagePerHour = 15;
+                    this.wagePerHour = 25;
                     this.wagePerMinute = 1;
 
                     this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute);
+
+                    this.earnedMinutesinDollars=(this.wagePerMinute *this.destinationTimeDifference).toFixed(2);
                 },
                 update: function () {
                     this.time = ((this.distance / this.speed).toFixed(2) * 60).toFixed(0);
@@ -51,6 +53,8 @@
 
                     this.wagePerMinute = (this.wagePerHour / 60).toFixed(2);
                     this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute).toFixed(0);
+
+                    this.earnedMinutesinDollars=(this.wagePerMinute *this.destinationTimeDifference).toFixed(2);
 
                 }
                 
@@ -93,21 +97,24 @@
 
         <img id=ticketImage src="./data/ticket.png" alt="ticket"> <span id="sourceTicketImage">Source: New York Speeding Fines</span> 
         <br></br>
-        <br></br>
 
         That being said, if you earn   <span   data-var="wagePerHour" class="TKAdjustableNumber" data-min="1" data-max="300" >$/hr</span>, which is  
         <span class="nonDraggables" data-var="wagePerMinute"   >$/min</span>, you will need to work
-        <span class="nonDraggables" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the ticket.
+        <span class="nonDraggables" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the <span class="prefixNonDraggable">$</span><span data-var="ticketPrice" class="nonDraggables" > </span> speed ticket.
 
-        Or, you can take the  <span class="nonDraggables" data-var="ticketProbability"  >% </span> risk 
-        of getting a <span class="prefixNonDraggable">$</span><span data-var="ticketPrice" class="nonDraggables" > </span></class>speed ticket and save <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>.
+        On the other hand, if you decide to take the <span class="nonDraggables" data-var="ticketProbability"  >% </span> risk 
+        of getting the <span class="prefixNonDraggable">$</span><span data-var="ticketPrice" class="nonDraggables" > </span>speed ticket, you will save <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>,
+        which is equavalent to <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="earnedMinutesinDollars" ></span> of how much you earn during the saved time.
         
-    
+        <br></br>
+        <br></br>
+
+        Would you take the risk? 
 
     
     </p> 
 </div>
- 
+  
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/7.16.1/firebase-app.js"></script>
 
