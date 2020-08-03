@@ -94,3 +94,15 @@ h1{
 	border-radius: 5%;
 	padding: 5%;
 }
+
+.subheader{
+	font-size: larger;
+	color: teal;
+}
+
+ 
+#approximationNote, .approximationNote{
+	font-size: 17px;
+	font-style: oblique;
+	color: rgb(255, 169, 57);
+}

@@ -7,15 +7,12 @@
 
     <!-- Tangle -->
     <script type="text/javascript" src="Tangle.js"></script>
-
     <link rel="stylesheet" href="TangleKit/TangleKit.css" type="text/css">
     <script type="text/javascript" src="TangleKit/mootools.js"></script>
     <script type="text/javascript" src="TangleKit/sprintf.js"></script>
     <script type="text/javascript" src="TangleKit/BVTouchable.js"></script>
     <script type="text/javascript" src="TangleKit/TangleKit.js"></script>
- 
-    <script type="text/javascript">
-      
+    <script type="text/javascript">   
      
         function setUpTangle () {
      
@@ -29,18 +26,18 @@
                     this.neededSpeed = 60;
                     this.speedLimit = 60;
                     this.speedLimitDifference = Math.abs(this.neededSpeed - this.speed);
-                
-                    this.destinationTimeDifference = Math.abs(this.time - this.wantedTime);
 
+                    this.destinationTimeDifference = Math.abs(this.time - this.wantedTime);
                     this.ticketProbability = 10;
                     this.ticketPrice = 75;
-
                     this.wagePerHour = 25;
                     this.wagePerMinute = 1;
 
                     this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute);
 
                     this.earnedMinutesinDollars=(this.wagePerMinute *this.destinationTimeDifference).toFixed(2);
+
+                    this.ticketTimesPercentage = (this.ticketProbability / 100 *this.ticketPrice).toFixed(2);
                 },
                 update: function () {
                     this.time = ((this.distance / this.speed).toFixed(2) * 60).toFixed(0);
@@ -55,6 +52,10 @@
                     this.workTimeForTicketPerMinute = (this.ticketPrice / this.wagePerMinute).toFixed(0);
 
                     this.earnedMinutesinDollars=(this.wagePerMinute *this.destinationTimeDifference).toFixed(2);
+
+                    //this.ticketTimesPercentage = Math.round(((this.ticketProbability / 100 *this.ticketPrice) *100) / 100).toFixed(2);
+
+                    this.ticketTimesPercentage = (this.ticketProbability / 100 *this.ticketPrice).toFixed(2);
 
                 }
                 
@@ -77,39 +78,49 @@
     <div class="content">
         <h1>What If?</h1>
 
+
+        
         <p id="example">
-        If you drive at <span    data-var="speed" data-step="5"
+            <span class = "subheader">Driving Speed, Time, and Destination </span><br>
+            If you drive at <span    data-var="speed" data-step="5"
         class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span>  
+
+
         and your destination is within <span   data-var="distance" class="TKAdjustableNumber" data-min="1"  data-max="1000"> miles</span>,
         you
         will reach your destination in <span class="nonDraggables" data-var="time"  > minutes</span>.<!--  -- at  <span class="nonDraggables" id="nowAfter"></span>. -->
    
    
+        <br></br> 
         <br></br>
+
+        <span class = "subheader">Speed Limit and Speed Ticket </span><br>
         If your speed limit is  <span   data-var="speedLimit"   data-step="5" class="TKAdjustableNumber" data-min="1" data-max="120" > mph</span> and you want to reach your destination in   
         <span   data-var="wantedTime" class="TKAdjustableNumber" data-min="1" data-max="600" > minutes</span>, you need to drive at 
         <span class="nonDraggables" data-var="neededSpeed"   > mph</span>.
     Being <span class="nonDraggables" data-var="speedLimitDifference"  > mph</span> over the speed limit, you assume there is <span   data-var="ticketProbability" class="TKAdjustableNumber" data-min="0" data-max="100" >%</span> chance
-        of getting a speed ticket worth <span class="prefixDraggable">$</span><span class="TKAdjustableNumber" data-var="ticketPrice"  data-step="5"  data-min="0" data-max="5000" ></span>.
-  
+        of getting a speed ticket worth <span class="prefixDraggable">$</span><span class="TKAdjustableNumber" data-var="ticketPrice"  data-step="5"  data-min="0" data-max="5000" ></span>; or,
+        
+       on average of <span class= approximationNote>  ( <span class="nonDraggables" data-var="ticketProbability" id="approximationNote" >% </span> x <span class="prefixNonDraggable" id="approximationNote">$</span><span data-var="ticketPrice" class="nonDraggables" id="approximationNote" > </span>)</span> = <span class="prefixNonDraggable"> $</span><span class="nonDraggables" data-var="ticketTimesPercentage"  ></span>.
         <br></br>
         <br></br>
 
         <img id=ticketImage src="./data/ticket.png" alt="ticket"> <span id="sourceTicketImage">Source: New York Speeding Fines</span> 
         <br></br>
 
-        That being said, if you earn   <span   data-var="wagePerHour" class="TKAdjustableNumber" data-min="1" data-max="300" >$/hr</span>, which is  
-        <span class="nonDraggables" data-var="wagePerMinute"   >$/min</span>, you will need to work
-        <span class="nonDraggables" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the <span class="prefixNonDraggable">$</span><span data-var="ticketPrice" class="nonDraggables" > </span> speed ticket.
 
-        On the other hand, if you decide to take the <span class="nonDraggables" data-var="ticketProbability"  >% </span> risk 
-        of getting the <span class="prefixNonDraggable">$</span><span data-var="ticketPrice" class="nonDraggables" > </span>speed ticket, you will save <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>,
-        which is equavalent to <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="earnedMinutesinDollars" ></span> of how much you earn during the saved time.
-        
-        <br></br>
-        <br></br>
+        <span class = "subheader">Time vs. Money Analysis</span><br>
+        If you earn   <span class="prefixDraggable">$</span><span   data-var="wagePerHour" class="TKAdjustableNumber" data-min="1" data-max="300" >/hr</span>, which is  
+        <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="wagePerMinute"   >/min</span>, you will need to work
+        <span class="nonDraggables" data-var="workTimeForTicketPerMinute"> minutes</span> to pay for the full <span class="prefixNonDraggable">$</span><span data-var="ticketPrice" class="nonDraggables" > </span> speed ticket.
 
-        Would you take the risk? 
+        However, taking the probability in account, the average ticket price is <span class="prefixNonDraggable"> $</span><span class="nonDraggables" data-var="ticketTimesPercentage"  ></span>  <span class= approximationNote>  ( <span class="nonDraggables" data-var="ticketProbability" id="approximationNote" >% </span> x <span class="prefixNonDraggable" id="approximationNote">$</span><span data-var="ticketPrice" class="nonDraggables" id="approximationNote" > </span>)</span>.
+       
+       
+        As you wanted to reach your destination in <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>, you are earning an equavalent value of <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="earnedMinutesinDollars" ></span>.
+        <br></br> 
+
+        Would you pay the analytically calculated ticket price of <span class="prefixNonDraggable"> $</span><span class="nonDraggables" data-var="ticketTimesPercentage"  ></span> or <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="earnedMinutesinDollars" ></span> from the time saved? 
 
     
     </p> 
