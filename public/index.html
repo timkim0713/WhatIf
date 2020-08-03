@@ -76,8 +76,9 @@
 <body onload="setUpTangle(); addTime(5);">
 
     <div class="content">
-        <h1>What If?</h1>
+        <a style= "color:cadetblue; font-size: smaller; float: right;"target="_blank" rel="noopener noreferrer" href="https://timkim0713.github.io/">Daekyung Kim</a>
 
+        <h1>What If?</h1>
 
         
         <p id="example">
@@ -99,9 +100,9 @@
         <span   data-var="wantedTime" class="TKAdjustableNumber" data-min="1" data-max="600" > minutes</span>, you need to drive at 
         <span class="nonDraggables" data-var="neededSpeed"   > mph</span>.
     Being <span class="nonDraggables" data-var="speedLimitDifference"  > mph</span> over the speed limit, you assume there is <span   data-var="ticketProbability" class="TKAdjustableNumber" data-min="0" data-max="100" >%</span> chance
-        of getting a speed ticket worth <span class="prefixDraggable">$</span><span class="TKAdjustableNumber" data-var="ticketPrice"  data-step="5"  data-min="0" data-max="5000" ></span>; or,
+        of getting a speed ticket worth <span class="prefixDraggable">$</span><span class="TKAdjustableNumber" data-var="ticketPrice"  data-step="5"  data-min="0" data-max="5000" ></span> or
         
-       on average of <span class= approximationNote>  ( <span class="nonDraggables" data-var="ticketProbability" id="approximationNote" >% </span> x <span class="prefixNonDraggable" id="approximationNote">$</span><span data-var="ticketPrice" class="nonDraggables" id="approximationNote" > </span> = )</span> <span class="prefixNonDraggable"> $</span><span class="nonDraggables" data-var="ticketTimesPercentage"  ></span>.
+       the ticket price with the probability taken into account of <span class= approximationNote>  ( <span class="nonDraggables" data-var="ticketProbability" id="approximationNote" >% </span> x <span class="prefixNonDraggable" id="approximationNote">$</span><span data-var="ticketPrice" class="nonDraggables" id="approximationNote" > </span> = )</span> <span class="prefixNonDraggable"> $</span><span class="nonDraggables" data-var="ticketTimesPercentage"  ></span>.
         <br></br>
         <br></br>
 
@@ -120,10 +121,12 @@
         As you wanted to reach your destination in <span class="nonDraggables" data-var="destinationTimeDifference" > minutes</span>, you are earning an equavalent value of <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="earnedMinutesinDollars" ></span>.
         <br></br> 
 
-        Would you pay the analytically calculated ticket price of <span class="prefixNonDraggable"> $</span><span class="nonDraggables" data-var="ticketTimesPercentage"  ></span> or <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="earnedMinutesinDollars" ></span> from the time saved? 
+        Would you speed up and pay the analytically calculated ticket price of <span class="prefixNonDraggable"> $</span><span class="nonDraggables" data-var="ticketTimesPercentage"  ></span> but earn <span class="prefixNonDraggable">$</span><span class="nonDraggables" data-var="earnedMinutesinDollars" ></span> from saving the time? 
 
-    
     </p> 
+    <br>
+    <span id="sourceTicketImage">Note: Speeding is always a threat to not only you but also to people around you. This analysis is demonstrated for certain theoretical purposes and should not be considered seriously.</span> 
+
 </div>
   
 <!-- The core Firebase JS SDK is always required and must be listed first -->
